@@ -30,3 +30,64 @@ channel = "1.56.0" components=["rustfmt", "clippy"]
 ```
 
 # 从npm到cargo
+cargo默认从`crates.io`下载依赖。
+
+- 在`node`里，有`package.json`。而在`Rust`中，则有`Cargo.toml`。
+- `npm init` = `cargo init` or `cargo new`
+    - `cargo new [path]`创建新的目录
+- 安装依赖: `npm install` = `cargo install cargo-edit`
+- 全局安装: `npm i -g` = `cargo install`
+- 跑测试项: `npm test` = `cargo test`
+- 发布: `npm publish` = `cargo publish`
+- 其他设置:
+    - server: `npm run start` = `cargo run`
+        - 例子代码: `cargo run --example xxx`
+    - profile code: `npm run benchmarks` = `cargo bench`
+    - webpack build: `npm run build` = `cargo build`
+    - 移除临时文件和生成文件: `npm run clean` = `cargo clean`
+    - 生成文档: `npm run docs` = `cargo doc`
+
+`npm`内置了执行任务，所以很少看到`Makefile`，而rust则有个类似的`just`
+安装`just`: `cargo install just`
+
+# Workspaces & monorepos
+在主目录的`Cargo.toml`里创建`[workspace]`入口。
+```shell
+[workspace]
+members = [
+    "crates/*"
+]
+```
+指向的依赖
+```shell
+[dependencies]
+other-project = { path = "../other-project" }
+```
+
+# 执行
+- 在根目录下(Cargo.toml)执行：`cargo run`
+- 编译: `cargo build --release`
+
+# 语法
+
+## 变量
+- `let`, `const`
+```rust
+let greetings = "Hi";
+
+println!(greeings);
+```
+- 类型声明：
+```rust
+fn main() {
+    greet("!");
+}
+
+fn greet(target: String) {
+    println("{}", target);
+}
+```
+
+
+
+
