@@ -89,5 +89,8 @@ fn greet(target: String) {
 ```
 
 
-
+# 语法快速阅读
+- let, const
+    - 因为rust默认万物不可变，所以需要加mut: `let mut test = 1;`
+    
 
